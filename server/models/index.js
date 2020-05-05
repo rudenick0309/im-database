@@ -8,24 +8,32 @@ module.exports = {
 	messages: {
 		get: function () {
 			return new Promise((resolve, reject) => {
-				let data = db.query(
-					"SELECT users.user_name, messages.message, messages.roomname FROM messages JOIN users ON messages.user_id=users.user_id",
-					(err, rows) => {
-						if (err) reject(err);
-						else resolve(rows); //뭐를 넣을건지
+				let sql = "SELECT message, roomname FROM messages";
+				db.query(sql, (err, result) => {
+					if (err) {
+						reject(err);
+					} else {
+						console.log(result);
+						resolve(result);
 					}
-				);
+
+					// else resolve(rows); //뭐를 넣을건지
+				});
 			});
 		}, // a function which produces all the messages
-		post: function ({ user_name, message, roomname }) {
-			console.log("모델 메세지 포스트", user_name, message, roomname);
-			let query =
-				"INSERT INTO messages (user_name, message, roomname) VALUES ('test', 'test2', 'test3')";
-			let arg = [user_name, message, roomname];
+		post: function (p) {
+			console.log("모델 메세지 포스트", message, roomname);
+			let { message, roomname } = p;
+			let sql = "INSERT INTO messages (message, roomname) VALUES ?";
+			let arg = [message, roomname];
 			return new Promise((resolve, reject) => {
-				db.query(query, arg, (err, rows) => {
-					if (!err) resolve(rows);
-					else reject(err);
+				db.query(sql, arg, (err, result) => {
+					if (err) {
+						reject(err);
+					} else {
+						console.log("리절트", result);
+						resolve(result);
+					}
 				});
 			});
 		}, // a function which can be used to insert a message into the database
@@ -34,19 +42,29 @@ module.exports = {
 	users: {
 		// Ditto as above.
 		get: function () {
-			console.log("모델 유저 겟");
-			let data = db.query("SELECT * FROM users", function (err, rows, fields) {
-				if (!err) console.log("the solution is: ", rows);
-				else console.log("error while pergoming query", err);
+			return new Promise((resolve, reject) => {
+				db.query("SELECT user_name FROM users", (err, res) => {
+					if (!err) {
+						resolve(res);
+					} else {
+						reject(err);
+					}
+				});
 			});
-			console.log("메세지 쿼리", data);
 		},
-		post: function () {
-			let data = db.query("SELECT * FROM users", function (err, rows, fields) {
-				if (!err) console.log("the solution is: ", rows);
-				else console.log("error while pergoming query", err);
+		post: function (p) {
+			let { user_name } = p;
+			let arg = [user_name];
+			return new Promise((resolve, reject) => {
+				db.query("INSERT INTO users VALUES (arg)", (err, result) => {
+					if (err) {
+						reject(err);
+					} else {
+						console.log(result);
+						resolve(result);
+					}
+				});
 			});
-			console.log("모델 유저 포스트");
 		},
 	},
 };

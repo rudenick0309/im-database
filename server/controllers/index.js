@@ -6,43 +6,38 @@ var models = require("../models");
 module.exports = {
 	messages: {
 		get: function (req, res) {
-			console.log("req.url", req.url, "req.method", req.method);
-			console.log("메세지 겟");
-			// res.send();
+			// console.log("req.url", req.url, "req.method", req.method);
+			console.log("메세지 겟", models.req);
+			return new Promise((resolve, reject) => {
+				// if (err) reject(err);
+				resolve();
+			});
 		}, // a function which handles a get request for all messages
 		post: function (req, res) {
-			console.log("req.url : ", req.url, "req.method : ", req.method);
-			console.log("이건", req.body);
-			let body = "";
-			var status = 204;
-			res.writeHead(status, defaultCorsHeaders);
-			req
-				.on("data", (chunk) => {
-					body += chunk;
-				})
-				.on("end", () => {
-					console.log(body);
-					const data = JSON.parse(body);
-					console.log(data);
-				});
+			var body = req.body;
+			console.log("메제시 바디 포스트", body);
+			// var userName = document.querySelector(".inputUser").value;
 		}, // a function which handles posting a message to the database
 	},
 
 	users: {
 		get: function (req, res) {
 			// console.log("control, user", req, res);
-			console.log("유저 겟");
+			let body = req.body;
+			console.log("유저 겟", body);
 		}, // a function which handles a get request for all users
 		post: function (req, res) {
 			// console.log("control, user", req, res);
-			console.log("유저 포스트");
+			// var userMessage = document.querySelector(".inputChat").value;
+			let body = req.body;
+			console.log("유저 포스트", body);
 		}, // a function which handles posting a user to the database
 	},
 };
 
-const defaultCorsHeaders = {
-	"access-control-allow-origin": "*",
-	"access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-	"access-control-allow-headers": "content-type, accept",
-	"access-control-max-age": 10, // Seconds.
-};
+// const defaultCorsHeaders = {
+// 	"access-control-allow-origin": "*",
+// 	"access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+// 	"access-control-allow-headers": "content-type, accept",
+// 	"access-control-max-age": 10, // Seconds.
+// };

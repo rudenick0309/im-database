@@ -20,6 +20,6 @@ var dbConnection = mysql.createConnection({
 	database: "chat",
 });
 dbConnection.connect();
-dbConnection.end();
+// dbConnection.end();
 
 module.exports = dbConnection;
