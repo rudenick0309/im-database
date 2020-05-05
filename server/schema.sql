@@ -6,7 +6,8 @@ USE chat;
 CREATE TABLE `messages`
 (
   `message_id` int PRIMARY KEY AUTO_INCREMENT,
-  `user_id` int,
+  `user_id` varchar
+(255),
   `message` varchar
 (255),
   `roomname` varchar

@@ -19,6 +19,7 @@
   "dependencies": {
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.9.2",
+    "cors": "^2.8.5",
     "express": "^4.10.1",
     "mongodb": "^3.5.7",
     "morgan": "^1.4.1",
