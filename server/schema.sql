@@ -10,8 +10,7 @@ CREATE TABLE `messages`
 (255),
    `user_name` varchar
 (255),
-  `text` varchar
-(255),
+  `text` text,
   `roomname` varchar
 (255),
   `date` timestamp

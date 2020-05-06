@@ -17,10 +17,10 @@ module.exports = {
 	messages: {
 		get: function () {
 			return new Promise((resolve, reject) => {
-				let sql = "SELECT user_name, text, roomname FROM messages";
-				db.query(sql, function (err, rows) {
+				let sql = "SELECT user_name, text, date, roomname FROM messages";
+				db.query(sql, function (err, results) {
 					if (!err) {
-						resolve(rows);
+						resolve(results);
 					} else {
 						reject(err);
 					}
@@ -28,18 +28,18 @@ module.exports = {
 			});
 		}, // a function which produces all the messages
 		post: function ({ user_name, text, date, roomname }) {
-			console.log("유저 제발", user_name);
+			console.log("유저", user_name);
 			console.log("텍스트", text);
 			console.log("방이름", roomname);
-			console.log("data 쫌", date);
+			console.log("data", date);
 
 			return new Promise((resolve, reject) => {
 				let sql =
 					"INSERT INTO messages (user_name, text, roomname) VALUES (?, ?,  ?)";
 				let params = [user_name, text, roomname];
-				db.query(sql, params, function (err, rows) {
+				db.query(sql, params, function (err, results) {
 					if (!err) {
-						resolve(rows);
+						resolve(results);
 					} else {
 						reject(err);
 					}
@@ -53,9 +53,9 @@ module.exports = {
 		get: function () {
 			return new Promise((resolve, reject) => {
 				let sql = "SELECT user_name FROM users";
-				db.query(sql, function (err, rows) {
+				db.query(sql, function (err, results) {
 					if (!err) {
-						resolve(rows);
+						resolve(results);
 					} else {
 						reject(err);
 					}
@@ -68,9 +68,9 @@ module.exports = {
 			return new Promise((resolve, reject) => {
 				let sql = "INSERT INTO users (user_name) VALUES (?)";
 				let params = [user_name];
-				db.query(sql, params, function (err, rows) {
+				db.query(sql, params, function (err, results) {
 					if (!err) {
-						resolve(rows);
+						resolve(results);
 					} else {
 						reject(err);
 					}

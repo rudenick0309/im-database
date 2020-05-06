@@ -19,7 +19,7 @@ var dbConnection = mysql.createConnection({
 	// port: 3000,
 	database: "chat",
 });
-dbConnection.connect();
+// dbConnection.connect();
 // dbConnection.end();
 
 module.exports = dbConnection;

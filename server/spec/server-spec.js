@@ -58,7 +58,7 @@ describe("Sprint-database", () => {
 							var queryString = "SELECT * FROM messages";
 							// var queryString =
 							// 	"INSERT INTO messages (user_name, text, roomname) VALUES (?, ?, ?)";
-							var queryArgs = ["In mercy's name, three days is all I need."];
+							var queryArgs = []; // unexpeted AssertionError 2, 1
 							// "In mercy's name, three days is all I need."
 
 							dbConnection.query(queryString, queryArgs, function (
@@ -88,8 +88,8 @@ describe("Sprint-database", () => {
 		it("Should output all messages from the DB", function (done) {
 			// Let's insert a message into the db
 			var queryString =
-				"INSERT INTO messages (user_name, text, roomname) VALUES (?, ?, ?)";
-			// var queryString = "SELECT * FROM messages";
+				"INSERT INTO messages(user_name, text, roomname) VALUES (?, ?, ?)";
+			// var queryString = "INSERT INTO users (user_name) VALUES (?)";
 			var queryArgs = ["what", "Men like you can never change!", "main"];
 			// TODO - The exact query string and query args to use
 			// here depend on the schema you design, so I'll leave
