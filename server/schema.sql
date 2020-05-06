@@ -14,7 +14,7 @@ CREATE TABLE `messages`
 (255),
   `roomname` varchar
 (255),
-  `created_at` timestamp
+  `date` timestamp
 );
 
 CREATE TABLE `users`

@@ -48,9 +48,9 @@ const app = {
 		document.querySelector(".inputUser").value = "";
 		document.querySelector(".inputChat").value = "";
 	},
-	renderMessage: ({ username, text, date, roomname }) => {
+	renderMessage: ({ user_name, text, date, roomname }) => {
 		const tmpl = `<div class="chat">
-      <div class="username">${username
+      <div class="username">${user_name
 				.replace(/</g, "&lt;")
 				.replace(/>/g, "&gt;")
 				.replace(/</g, "&lt;")
@@ -76,7 +76,7 @@ const app = {
 		app.clearMessages();
 		app.send(
 			{
-				username: document.querySelector(".inputUser").value,
+				user_name: document.querySelector(".inputUser").value,
 				text: document.querySelector(".inputChat").value,
 				roomname: "코드스테이츠",
 			},

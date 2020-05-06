@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* You'll need to have MySQL running and your Node server running
  * for these tests to pass. */
 
@@ -55,7 +56,10 @@ describe("Sprint-database", () => {
 							// TODO: You might have to change this test to get all the data from
 							// your message table, since this is schema-dependent.
 							var queryString = "SELECT * FROM messages";
+							// var queryString =
+							// 	"INSERT INTO messages (user_name, text, roomname) VALUES (?, ?, ?)";
 							var queryArgs = ["In mercy's name, three days is all I need."];
+							// "In mercy's name, three days is all I need."
 
 							dbConnection.query(queryString, queryArgs, function (
 								err,
@@ -64,6 +68,7 @@ describe("Sprint-database", () => {
 								// Should have one result:
 								if (err) {
 									// console.log(err);
+									console.log("서버스펙", results);
 									throw err;
 								}
 								expect(results.length).to.equal(1);
@@ -84,6 +89,7 @@ describe("Sprint-database", () => {
 			// Let's insert a message into the db
 			var queryString =
 				"INSERT INTO messages (user_name, text, roomname) VALUES (?, ?, ?)";
+			// var queryString = "SELECT * FROM messages";
 			var queryArgs = ["what", "Men like you can never change!", "main"];
 			// TODO - The exact query string and query args to use
 			// here depend on the schema you design, so I'll leave
