@@ -5,10 +5,12 @@ USE chat;
 
 CREATE TABLE `messages`
 (
-  `message_id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` varchar
 (255),
-  `message` varchar
+   `user_name` varchar
+(255),
+  `text` varchar
 (255),
   `roomname` varchar
 (255),
@@ -17,15 +19,12 @@ CREATE TABLE `messages`
 
 CREATE TABLE `users`
 (
-  `user_id` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_name` varchar
 (255)
 );
 
-ALTER TABLE `messages`
-ADD FOREIGN KEY
-(`user_id`) REFERENCES `users`
-(`user_id`);
+
 
 /* Create other tables and define schemas for them here! */
 /*  Execute this file from the command line by typing:
