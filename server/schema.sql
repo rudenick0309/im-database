@@ -1,31 +1,35 @@
+-- //시퀄라이즈, 전부 주석
+-- DROP DATABASE IF EXISTS chat;
+-- CREATE DATABASE chat;
+-- USE chat;
 
-DROP DATABASE IF EXISTS chat;
-CREATE DATABASE chat;
-USE chat;
+-- CREATE TABLE `messages`
+-- (
+--   `id` int PRIMARY KEY AUTO_INCREMENT,
+--   `user_id` varchar
+-- (255),
+--    `user_name` varchar
+-- (255),
+--   `text` text,
+--   `roomname` varchar
+-- (255),
+--   `date` timestamp
+-- );
 
-CREATE TABLE `messages`
-(
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `user_id` varchar
-(255),
-   `user_name` varchar
-(255),
-  `text` text,
-  `roomname` varchar
-(255),
-  `date` timestamp
-);
-
-CREATE TABLE `users`
-(
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `user_name` varchar
-(255)
-);
+-- CREATE TABLE `users`
+-- (
+--   `id` int PRIMARY KEY AUTO_INCREMENT,
+--   `user_name` varchar
+-- (255)
+-- );
 
 
 
-/* Create other tables and define schemas for them here! */
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
+-- /* Create other tables and define schemas for them here! */
+-- /*  Execute this file from the command line by typing:
+--  *    mysql -u root < server/schema.sql
+--  *  to create the database and the tables.*/
+
+
+-- =시퀄라이저===========================
+
